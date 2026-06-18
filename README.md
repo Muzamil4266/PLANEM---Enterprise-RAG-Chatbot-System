@@ -1,3 +1,24 @@
+
+ 
+ # Screenshots
+
+## Screenshot 1
+![Screenshot 1](P%20(1).png)
+
+## Screenshot 2
+![Screenshot 2](P%20(2).png)
+
+## Screenshot 3
+![Screenshot 3](P%20(3).png)
+
+## Screenshot 4
+![Screenshot 4](P%20(4).png)
+
+## Screenshot 5
+![Screenshot 5](P5.png)
+ 
+ 
+ 
  What is PLANEM?
 PLANEM is a powerful, production-ready RAG (Retrieval-Augmented Generation) chatbot system that allows you to chat with your PDF documents using state-of-the-art AI technology. Built with a modern dark-themed GUI, it provides real-time indexing, intelligent retrieval, and evidence-based answers with confidence scoring. Everything runs locally on your machine - no API costs, no data leaving your computer, complete privacy guaranteed.
 
