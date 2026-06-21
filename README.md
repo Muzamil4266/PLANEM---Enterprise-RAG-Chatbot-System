@@ -19,194 +19,219 @@
  
  
  
- What is PLANEM?
-PLANEM is a powerful, production-ready RAG (Retrieval-Augmented Generation) chatbot system that allows you to chat with your PDF documents using state-of-the-art AI technology. Built with a modern dark-themed GUI, it provides real-time indexing, intelligent retrieval, and evidence-based answers with confidence scoring. Everything runs locally on your machine - no API costs, no data leaving your computer, complete privacy guaranteed.
+ 📚 PLANEM AI - Document RAG Chatbot
+Chat with your documents using AI. Get answers from your PDFs instantly.
 
-✨ Core Capabilities
-📄 Smart Document Ingestion
-Upload multiple PDF files and watch as PLANEM automatically extracts text, creates intelligent chunks, and builds a searchable vector database. The system shows you real-time progress with detailed status updates so you always know what's happening.
+🤔 What is PLANEM AI?
+PLANEM AI is a desktop application that lets you talk to your documents. You upload PDFs, and the AI reads them, indexes them, and answers your questions based on what's inside.
 
-⚡ Real-time Indexing
-Unlike traditional systems that make you wait, PLANEM shows you every step of the indexing process. You see page extraction progress, chunk creation counts, embedding generation status, and database storage progress with estimated time remaining.
+Think of it like having a smart assistant that has read all your documents and can find any information you need in seconds. No more searching through hundreds of pages manually!
 
-🔍 Advanced Semantic Search
-Using state-of-the-art Sentence Transformers with cosine similarity, PLANEM understands the meaning behind your questions - not just keywords. This means you get relevant answers even when your question uses different words than the document.
+✨ What Can It Do?
+📄 Read PDFs - Upload any PDF document. The app reads and understands everything inside.
 
-🤖 Local LLM Integration
-PLANEM works with Ollama to run models locally. You can choose between TinyLlama for speed, Phi3 for balance, Gemma for quality, or Qwen2.5 for advanced capabilities. Zero cloud costs, zero privacy concerns.
+🔍 Search Instantly - Ask questions in plain English and get answers from your documents.
 
-📊 Intelligent Confidence Scoring
-Every answer comes with a detailed confidence analysis. PLANEM evaluates retrieval quality, best match strength, answer coverage, and evidence quantity to give you a clear confidence score from 0 to 100 percent.
+🤖 AI-Powered - Uses advanced AI models to understand your questions and find the right answers.
 
-🎨 Modern Dark Theme Interface
-The beautiful CustomTkinter interface features a professional dark theme with accent color support. Every section is clearly labeled and organized for intuitive navigation.
+📑 Show Sources - Every answer comes with page numbers and evidence so you can verify the information.
 
-📱 Vertical Resizable Panels
-Each section of the interface has a drag handle at the top. Simply click and drag to resize any panel vertically. The interface adapts to your preferred layout without squeezing content.
+📊 Confidence Meter - See how confident the AI is about each answer. Green means strong evidence!
 
-💾 Complete Chat History
-Every conversation is automatically saved to a SQLite database. You can revisit previous chats, export your entire history to a text file, or clear history when needed.
+💾 Chat History - All your conversations are saved automatically. Review them anytime.
 
-🔒 Strict Grounding System
-PLANEM is designed to prevent hallucinations. It only answers from the provided documents and clearly states when information cannot be found. No made-up facts, no outside knowledge leakage.
+📤 Export Chat - Save your conversations as text files for sharing or record-keeping.
 
-🛠️ Technology Stack
-PLANEM is built on a robust stack of proven technologies. The vector database is ChromaDB, which provides fast and scalable similarity search. For embeddings, we use the all-MiniLM-L6-v2 model from Sentence Transformers - it's fast, lightweight, and delivers excellent semantic understanding. The GUI is powered by CustomTkinter, giving us a modern, dark-themed interface that works on all platforms. PDF processing uses pdfplumber for advanced extraction with PyPDF2 as a fallback. The LLM integration is handled through Ollama, supporting multiple models including TinyLlama, Phi3, Gemma, and Qwen2.5. Chat history is stored in SQLite for reliable, lightweight database operations.
+🎨 Beautiful Interface - Modern dark theme with easy-to-use controls.
 
-📦 Installation Guide
-Prerequisites
-Before installing PLANEM, ensure you have Python 3.11 or higher installed on your system. You'll also need Ollama installed and running, as it handles the local LLM inference. Git is optional but recommended for cloning the repository.
+⚙️ How It Works
+Simple 3-Step Process
+1️⃣ Upload Documents - Add your PDFs to the system.
 
-Step 1: Get the Code
-Clone the repository using Git or download it directly from GitHub.
+2️⃣ Index Them - The AI reads and organizes all the information. This builds a searchable database.
+
+3️⃣ Ask Questions - Type your question and get instant answers with source references.
+
+Behind the Scenes
+📝 Text Extraction - The app extracts text from your PDFs using pdfplumber and PyPDF2. It handles multiple page formats and extracts clean text.
+
+🧩 Smart Chunking - Long documents are split into smaller pieces called "chunks." Each chunk keeps track of which page it came from. This makes searching fast and accurate.
+
+🧠 AI Embeddings - Using the all-MiniLM-L6-v2 model, the app converts text into mathematical vectors that capture meaning. This helps find the most relevant information.
+
+💾 Vector Database - ChromaDB stores all the text chunks and their embeddings. It allows lightning-fast similarity searches.
+
+🔍 Semantic Search - When you ask a question, the app finds the chunks that are most similar in meaning, not just matching keywords.
+
+🤖 Answer Generation - Using Ollama with models like tinyllama, phi3, or gemma, the app generates natural language answers based on the retrieved chunks.
+
+🎯 Confidence Scoring - Five different metrics calculate how reliable the answer is:
+
+Retrieval Score (how good were the search results)
+
+Best Chunk Score (the most relevant piece found)
+
+Coverage Score (how much of the answer is in the documents)
+
+Evidence Score (how many sources support the answer)
+
+Final Confidence (combined score shown as a percentage)
+
+🚀 Applications
+🎓 Students - Quickly find information in textbooks and lecture notes. No more endless page flipping!
+
+🧑‍💼 Professionals - Search through reports, contracts, and business documents instantly.
+
+📚 Researchers - Extract specific information from research papers and academic literature.
+
+⚖️ Legal - Find relevant passages in legal documents and case files.
+
+🏥 Medical - Search through medical records, research, and clinical documentation.
+
+📰 Journalists - Find specific facts and quotes in large document collections.
+
+🧠 Personal Knowledge - Build a searchable library of everything you've read.
+
+🛠️ Installation & Setup
+Step 1: Install Python
+Make sure you have Python 3.8 or higher installed. Download from python.org if needed.
+
+Step 2: Install Ollama
+PLANEM AI uses Ollama for generating answers. Install it from ollama.ai.
+
+Step 3: Download a Model
+Open your terminal and run:
 
 bash
-git clone https://github.com/yourusername/planem.git
-cd planem
-Step 2: Install Dependencies
-Install all required Python packages using pip. The main dependencies include customtkinter for the GUI, chromadb for vector storage, sentence-transformers for embeddings, pdfplumber for PDF processing, and ollama for LLM integration.
-
-bash
-pip install -r requirements.txt
-If you prefer to install manually:
-
-bash
-pip install customtkinter chromadb sentence-transformers pdfplumber PyPDF2 ollama
-Step 3: Set Up Ollama
-Ollama is required for running local LLM models. Download and install Ollama from the official website if you haven't already. Then pull your preferred model.
-
-bash
-# Install Ollama from https://ollama.ai/download
-# Then pull your model of choice
 ollama pull tinyllama
-# OR
-ollama pull phi3
-# OR
-ollama pull gemma
-Step 4: Directory Structure
-PLANEM expects a specific directory structure. The models folder contains the embedding model files. The test_data folder is where you place your PDFs. The chroma_db folder holds the vector database. Settings are stored in settings.json and chat history in chat_history.db.
+You can also use other models like phi3, gemma, or qwen2.5.
 
-text
-📁 PLANEM/
-   ├── 📁 models/
-   │   └── 📁 all-MiniLM-L6-v2/
-   ├── 📁 test_data/
-   ├── 📁 chroma_db/
-   ├── 📄 settings.json
-   ├── 📄 chat_history.db
-   └── 📄 full_system.py
-🚀 Quick Start Guide
-Launch the Application
-Start PLANEM by running the main Python file. The GUI will open immediately while models load in the background.
-
+Step 4: Install Dependencies
 bash
-python full_system.py
-First-Time Setup
-When you launch PLANEM for the first time, it will start loading the embedding model and connecting to ChromaDB. You'll see status updates in the System Status panel. Wait for the "All systems ready" message before proceeding. If this is your first run, the system will automatically create the necessary database and configuration files.
+pip install customtkinter sentence-transformers chromadb PyPDF2 pdfplumber ollama
+Step 5: Run the Application
+bash
+python PLANEM.py
+💡 First-time Note: The app will download the embedding model (~90MB) on first run. This happens only once.
 
-Index Your Documents
-To start using PLANEM, you need to index your PDF documents. Navigate to the Document Ingestion section and click the Add PDF button to select your files. Once uploaded, click Update Indexes to start the indexing process. Watch the live progress in the Processing Log panel - you'll see page extraction, chunk creation, embedding generation, and database storage progress with estimated time remaining.
+🎮 How to Use
+📥 Add Documents
+Click "➕ ADD PDF" to upload one or more PDFs. The files are copied to the app's document folder.
 
-Ask Questions
-Once your documents are indexed, you can start asking questions. Type your question in the Question field and press Enter or click the Ask button. PLANEM will search the indexed documents, find the most relevant passages, and generate an evidence-based answer. Every answer comes with a confidence score and detailed source verification.
+🔄 Update Indexes
+Click "🔄 UPDATE INDEXES" to process all new PDFs. This extracts text, creates chunks, and builds the search database. Watch the progress bar and logs to see the process.
 
-🎮 Using PLANEM
-Understanding the Interface
-The PLANEM interface is organized into several clear sections. At the top, you'll find the System Status panel showing real-time health of all components. Below that are Status Cards displaying document count, chunk count, database size, and last update time. The Question section is where you type your queries and control generation. The Answer section displays AI responses. The Confidence Bar shows the confidence score with color coding. The Source Verification section shows evidence with page numbers. Settings allow you to configure chunk size, overlap, top-k retrieval, temperature, answer style, theme, and accent color. The Document Manager shows all your PDFs with indexing status. Document Ingestion handles uploads and indexing. The Processing Log shows live progress, System Events logs all actions, and the Error Console tracks issues.
+🔍 Ask Questions
+Type your question in the "QUESTION" box and press Enter or click "🔍 ASK". The app will search all documents and provide an answer with source verification.
 
-Working with Settings
-PLANEM offers extensive customization. Chunk Size controls how many characters go into each text chunk - larger chunks capture more context but may include irrelevant information. Chunk Overlap ensures continuity between chunks. Top-K determines how many chunks are retrieved from the database. Max Context Chunks controls how many chunks are sent to the LLM. Similarity Threshold filters out low-quality matches - higher values mean more relevant but fewer results. Temperature controls creativity - lower values produce more focused answers. Answer Style lets you choose between Short, Medium, or Detailed responses. Max Sentences caps the answer length. Theme switches between Dark, Light, and System appearance. Accent Color changes the application's primary color.
+📊 Check Confidence
+The confidence meter shows how reliable the answer is:
 
-Using Search Only Mode
-Search Only Mode is a powerful feature that skips the LLM entirely. When enabled, PLANEM shows you the retrieved chunks directly without generating a synthesized answer. This is extremely fast - about 10 times faster than full generation. It's perfect for quickly finding specific information or verifying what's in your documents. Toggle it on and off with a single click.
+🟢 Green (80%+) = Strong evidence from documents
 
-Managing Documents
-The Document Manager shows all PDFs in your test_data folder. Indexed documents display with a green checkmark and INDEXED status. New documents show with a red X and NOT INDEXED status. You can delete documents directly from the interface - this removes the file from your system and removes it from the vector database automatically.
+🟡 Yellow (60-80%) = Moderate evidence, some uncertainty
 
-Exporting and History
-PLANEM keeps a complete history of all conversations. You can view recent chats in a popup window or export your entire chat history to a text file. Each entry includes the timestamp, question, answer, sources, confidence score, and model used. This is invaluable for tracking research progress or reviewing past interactions.
+🔴 Red (below 60%) = Weak evidence, verify carefully
 
-🧠 How PLANEM Works
-Indexing Pipeline
-When you index documents, PLANEM follows a sophisticated pipeline. First, it extracts text from each PDF page using pdfplumber, with PyPDF2 as a fallback. The extracted text is split into chunks with intelligent overlap and duplicate removal. Each line is tied to its specific page number so we always know where information came from. The system generates embeddings using Sentence Transformers and stores them in ChromaDB with cosine similarity space. This creates a searchable vector database of all your document content.
+📑 View Sources
+The "SOURCE VERIFICATION" section shows:
 
-Retrieval Process
-When you ask a question, PLANEM generates an embedding for your question and performs a cosine similarity search against the indexed chunks. It retrieves the top-K most similar chunks and filters them based on the similarity threshold. Only chunks that pass the threshold are considered for the answer. This ensures high-quality, relevant information is used.
+Page numbers where information was found
 
-Answer Generation
-For each question, PLANEM assembles the retrieved chunks into a context with page citations. It uses a carefully crafted prompt that instructs the LLM to answer only from the provided context. The prompt enforces strict grounding - the LLM cannot use outside knowledge and must clearly state when information cannot be found. The LLM generates a response, and PLANEM captures the result along with page citations.
+Preview of the text chunks used
 
-Confidence Scoring
-PLANEM's confidence scoring is one of its most sophisticated features. Retrieval Score measures the average similarity of retrieved chunks. Best Chunk Score looks at the highest similarity among all chunks. Coverage Score evaluates how much of the answer is covered by the source text. Evidence Score considers how many relevant chunks were retrieved. These four scores are combined with different weights to produce a final confidence percentage. Answers scoring 80% or higher show as Strong, 60-79% as Moderate, and below 60% as Weak.
+Document names
+
+Confidence analysis breakdown
+
+📜 Chat History
+Click "📜 History" to see all your previous questions and answers. Everything is saved automatically.
+
+📤 Export Chat
+Click "📄 Export Chat" to save your conversation as a text file.
+
+🔍 Search Only Mode
+Toggle "SEARCH ONLY" to see the retrieved chunks without generating an AI answer. Useful for debugging or when you want to see raw search results.
+
+⚙️ Settings Explained
+Chunk Size - How many words per chunk. Larger chunks capture more context but take more memory.
+
+Chunk Overlap - Words shared between chunks to maintain context across boundaries.
+
+Top K - How many chunks to retrieve initially. More chunks mean better coverage but slower.
+
+Max Context Chunks - How many chunks to use for generating the answer.
+
+Similarity Threshold - Minimum relevance score (0-1). Higher values mean stricter filtering.
+
+Temperature - Controls AI creativity (0-1). Lower = more focused and factual.
+
+Answer Style - Short, Medium, or Detailed. Controls answer length.
+
+Max Sentences - Maximum sentences for Short/Medium answers.
+
+LLM Model - Choose which AI model to use (tinyllama, phi3, gemma, qwen2.5).
+
+Theme - Dark, Light, or System. Changes the app appearance.
+
+Accent Color - Blue, Green, Orange, Purple, or Red. Customizes the theme.
 
 🔧 Troubleshooting
-Common Issues and Solutions
-If you see "No documents indexed yet," simply upload PDFs and click Update Indexes. If models are not loading, check that Ollama is running by typing "ollama list" in your terminal. If you get a ChromaDB error, delete the chroma_db folder and rebuild the database. If performance is slow, try reducing Top-K or Max Context Chunks in settings. If you're getting low confidence scores, improve your document quality or lower the similarity threshold. If the GUI doesn't appear, check your Python version and reinstall the dependencies.
+❌ "Models are still loading" - Wait a few seconds after startup. The models load in the background.
 
-Debug Commands
-You can check Ollama status with "ollama list". Test the embedding model by importing SentenceTransformer and loading all-MiniLM-L6-v2. Check ChromaDB by importing chromadb and listing collections. To reset everything, delete the chroma_db folder, chat_history.db file, and settings.json file - the system will recreate them on next launch.
+❌ "No documents indexed" - You need to add PDFs and click "UPDATE INDEXES" first.
 
-System Requirements
-For minimum performance, you need a 4-core CPU, 8GB of RAM, and 10GB of storage. For recommended performance, use an 8-core CPU, 16GB of RAM, and 50GB of storage. Python 3.11 is the minimum version, with 3.12 recommended. Use the latest version of Ollama for best results.
+❌ "Collection missing" - Click "🔥 Rebuild Database" to recreate the database.
 
+❌ "Ollama connection failed" - Make sure Ollama is installed and running. Check with ollama list.
+
+❌ "No text extracted" - Some PDFs are scanned images. The app can't read them. Use OCR software first.
+
+🐌 Slow performance - Use a smaller model like tinyllama. Reduce chunk size and top_k values.
+
+🛠️ Technology Stack
+GUI - CustomTkinter for modern dark-themed interface
+
+AI Models - Sentence Transformers (all-MiniLM-L6-v2) for embeddings, Ollama for LLM generation
+
+Database - ChromaDB for vector storage and similarity search
+
+PDF Processing - pdfplumber and PyPDF2 for text extraction
+
+Language - Python 3.8+
+
+🎯 Project Structure
+text
+PLANEM AI/
+├── PLANEM.py              # Main application
+├── test_data/             # Your PDFs go here
+├── chroma_db/             # Vector database (auto-created)
+├── models/                # AI models (auto-downloaded)
+├── settings.json          # Your preferences
+└── chat_history.db        # All your conversations
 📝 License
-PLANEM is released under the MIT License, which means it's free for both commercial and personal use. You can modify, distribute, and use the software without restrictions. The license requires only that you include the original copyright notice and disclaimers. No attribution is required for derivative works.
-
-Contributing
-We welcome contributions to PLANEM. Fork the repository, create your feature branch, commit your changes, push to the branch, and open a Pull Request. All contributions are reviewed and appreciated.
-
-🌟 Why PLANEM?
-PLANEM stands out from other RAG systems for several reasons. It runs completely offline with zero API costs, ensuring your data never leaves your machine. The modern dark-themed GUI is intuitive and professional. Real-time progress tracking keeps you informed during indexing. The comprehensive confidence scoring system helps you trust the answers. Strict grounding prevents hallucinations. Multiple LLM models give you flexibility. Chat history and export features support research workflows. Vertical resizing lets you customize the interface. And everything is open source and free.
-
-📞 Support
-For issues, visit the GitHub Issues page. For discussions and questions, use GitHub Discussions. For urgent matters, reach out through the repository maintainers.
+Open-source and free to use. Modify and share as you like.
 
 🙏 Acknowledgments
-PLANEM is built on the shoulders of giants. Thanks to Sentence Transformers for the embedding models, ChromaDB for vector storage, Ollama for local LLM inference, CustomTkinter for the modern GUI, pdfplumber for PDF extraction, and the entire open-source community that makes projects like this possible.
+Built with love using these amazing tools:
 
-📊 Quick Reference
-Keyboard Shortcuts
-Enter: Submit question (when in Question field)
+CustomTkinter for the beautiful interface
 
-Escape: Cancel current operation
+Sentence Transformers for understanding text
 
-File Locations
-PDFs: test_data folder
+ChromaDB for fast searching
 
-Database: chroma_db folder
+Ollama for AI generation
 
-Settings: settings.json
+pdfplumber for reading PDFs
 
-History: chat_history.db
+💬 Need Help?
+Check the ERROR CONSOLE for detailed error messages
 
-Models: models folder
+Look at the PROCESSING LOG to see what the app is doing
 
-Ports Used
-Ollama: 11434 (default)
+Try rebuilding the database if you have issues
 
-Default Settings
-Chunk Size: 800
+Make sure your PDFs are text-based (not scanned)
 
-Chunk Overlap: 150
-
-Top-K: 10
-
-Max Context: 3
-
-Similarity Threshold: 0.50
-
-Temperature: 0.2
-
-Model: TinyLlama
-
-Answer Style: Short
-
-Max Sentences: 3
-
-Theme: Dark
-
-Accent Color: Blue
-
-Built with ❤️ for the open-source community
-
-PLANEM - Your intelligent document assistant that flies through information
+🤖 Ask anything. Get answers from your documents.
